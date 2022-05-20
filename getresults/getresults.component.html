@@ -1,0 +1,53 @@
+
+
+
+
+<ng-container *ngIf="updatePressed">
+
+
+
+    <br>
+    <br>
+    <div class="container">
+        <!--matSort (matSortChange)="sortData($event)"-->
+
+    <input  type="text" id="search" name="search" [(ngModel)]="data" (ngModelChange)="search($event)" placeholder="Find" >
+    <select [(ngModel)]="data2" (ngModelChange)="searchCompany($event)">
+        <option value=1>Company #1</option>
+        <option value=2>Company #2</option>
+        <option value=3>Company #3</option>
+        <option value="0"  selected >All</option>
+        
+      </select>
+    <table class="styled-table">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th >Fullname</th>
+            <th >Email</th>
+            <th >PhoneNumber</th>
+            <th >CompanyName</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+        <tr *ngFor="let contact of contacts2.list">
+            <td><a class="button2" [routerLink]="['/getSingle',contact.id]">{{contact.id}}</a></td>
+            <td >{{contact.fullName}}</td>
+            <td >{{contact.email}}</td>
+            <td >{{contact.phoneNumber}}</td>
+            <td >{{contact.companyName}}</td>
+            <td><a class="button" class="update" [routerLink]="['/update',contact?.id]">Update</a></td>
+            <td><a class="button"  [routerLink]="['/delete',contact?.id]">Delete</a></td>
+            
+        </tr>
+       
+       
+        
+        
+    </table>
+    <mat-paginator #paginator [pageSize]="10" [length]="10*contacts2.number" (page)="onPaginateChange($event)"></mat-paginator>
+</div>
+    </ng-container>
+
+   

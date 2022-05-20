@@ -1,0 +1,60 @@
+<ng-container *ngIf="updatePressed && isNotNull">
+
+
+   
+    <div class="container">
+      
+    <h1>Details</h1>
+    
+    <table width="100%" class="table table-success table-striped table-hover">
+        <tr>
+            <th>LastName</th>
+            <th>FirstName</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>CompanyName</th>
+            <th>Update</th>
+            <th>Delete</th>
+    
+        </tr>
+        <tr>
+            <td>{{contact?.lastName}}</td>
+            <td>{{contact?.firstName}}</td>
+            <td>{{contact?.email}} </td>
+            <td>{{contact?.phoneNumber}} </td>
+            <td>{{contact?.companyName}}</td>
+            <td><a class="nav-link" [routerLink]="['/update',contact?.id]">Update</a></td>
+            <td><a class="nav-link" [routerLink]="['/delete',contact?.id]">Delete</a></td>
+        </tr>
+       
+        
+    
+    </table>
+</div>
+    </ng-container>
+    <ng-container *ngIf="!updatePressed">  
+<div class="container">
+    <br>
+    <h1>Get Single Contact</h1>
+    <div class ="form-group" >
+    <form [formGroup]="singleForm" (ngSubmit)="getSingle()">
+        <br>
+        <div>
+            <label for="id">id</label>
+            <div>
+                <input class="form-control" type="number" id="id" [formControlName]="'id'" name="id" required
+                    autofocus>
+            </div>
+        </div>
+        <br>
+        <span>
+            <button class="btn btn-primary" type="submit">
+                GetSingle
+            </button>
+        </span>            
+    </form>
+    </div>
+</div>
+</ng-container>
+
+
